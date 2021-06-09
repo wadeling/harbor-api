@@ -37,10 +37,10 @@ apiversion="api/v2.0/"
 #curl -v -k --user ${username}:${password} $requrl 
 
 #get repo artifacts(tags,digest)
-projectname=test
-reponame=test
-requrl="${harborurl}${apiversion}projects/{$projectname}/repositories/${reponame}/artifacts"
-curl -v -k --user ${username}:${password} $requrl 
+#projectname=test
+#reponame=test
+#requrl="${harborurl}${apiversion}projects/{$projectname}/repositories/${reponame}/artifacts"
+#curl -v -k --user ${username}:${password} $requrl 
 
 #get image info 
 #projectname=test
@@ -50,6 +50,13 @@ curl -v -k --user ${username}:${password} $requrl
 #requrl="${harborurl}${apiversion}projects/{$projectname}/repositories/${reponame}/artifacts/${ref}"
 #curl -v --user ${username}:${password} $requrl 
 
+### use query string ###
+### very userful ! ###
+### operation={create delete}, op_time=[2021-06-03~2021-06-30] , must urlencode query param ####
+projectname=test
+reponame=test
+requrl="${harborurl}${apiversion}audit-log?operation=%7Bcreate%20delete%7D,op_time=%5B2021-06-03%7E2021-06-30%5D"
+curl -v -L -u ${username}:${password} $requrl
 
 #api v1 test
 # get tags
