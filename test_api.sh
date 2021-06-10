@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#username=admin
-#password=Harbor12345
+username=admin
+password=Harbor12345
 
-harborurl="http://192.168.208.195:80/"
+harborurl="http://192.168.208.25:80/"
 
 #api v2
-apiversion="api/v2.0/"
+#apiversion="api/v2.0/"
 
 #api v1
-#apiversion="api"
+apiversion="api"
 
 # get projects
 #requrl="${harborurl}${apiversion}projects"
@@ -53,14 +53,25 @@ apiversion="api/v2.0/"
 ### use query string ###
 ### very userful ! ###
 ### operation={create delete}, op_time=[2021-06-03~2021-06-30] , must urlencode query param ####
-projectname=test
-reponame=test
-requrl="${harborurl}${apiversion}audit-log?operation=%7Bcreate%20delete%7D,op_time=%5B2021-06-03%7E2021-06-30%5D"
-curl -v -L -u ${username}:${password} $requrl
+#projectname=test
+#reponame=test
+#requrl="${harborurl}${apiversion}audit-log?operation=%7Bcreate%20delete%7D,op_time=%5B2021-06-03%7E2021-06-30%5D"
+#curl -v -L -u ${username}:${password} $requrl
 
-#api v1 test
+
+####### api v1 test ######
 # get tags
 #reponame="library/nginx"
 #requrl="${harborurl}${apiversion}/repositories/${reponame}/tags?detail=true"
 #curl -v -k --user ${username}:${password} $requrl 
+
+# get projects
+#requrl="${harborurl}${apiversion}/projects"
+#curl -v -k --user ${username}:${password} $requrl 
+
+# get project access logs
+projectid=1
+query="?begin_timestamp=1622649600&operation=delete"
+requrl="${harborurl}${apiversion}/projects/${projectid}/logs${query}"
+curl -v -k --user ${username}:${password} $requrl 
 
