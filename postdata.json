@@ -1,0 +1,14 @@
+{
+  "project_name": "api-test",
+  "public": true,
+  "metadata": {
+    "public": "true",
+    "enable_content_trust": "false",
+    "prevent_vul": "false",
+    "severity": "none",
+    "auto_scan": "false",
+    "reuse_sys_cve_allowlist": "false",
+    "retention_id": "100"
+  },
+  "storage_limit": 0
+}

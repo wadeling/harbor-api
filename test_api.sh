@@ -6,10 +6,10 @@ password=Harbor12345
 harborurl="http://192.168.208.25:80/"
 
 #api v2
-#apiversion="api/v2.0/"
+apiversion="api/v2.0/"
 
 #api v1
-apiversion="api"
+#apiversion="api"
 
 # get projects
 #requrl="${harborurl}${apiversion}projects"
@@ -59,6 +59,12 @@ apiversion="api"
 #curl -v -L -u ${username}:${password} $requrl
 
 
+#############  create project ###########
+bodyfile="postdata"
+requrl="${harborurl}${apiversion}projects"
+curl -v -X POST -u ${username}:${password} -H "Content-Type: application/json" -d @./postdata.json $requrl
+
+
 ####### api v1 test ######
 # get tags
 #reponame="library/nginx"
@@ -70,8 +76,8 @@ apiversion="api"
 #curl -v -k --user ${username}:${password} $requrl 
 
 # get project access logs
-projectid=1
-query="?begin_timestamp=1622649600&operation=delete"
-requrl="${harborurl}${apiversion}/projects/${projectid}/logs${query}"
-curl -v -k --user ${username}:${password} $requrl 
+#projectid=1
+#query="?begin_timestamp=1622649600&operation=delete"
+#requrl="${harborurl}${apiversion}/projects/${projectid}/logs${query}"
+#curl -v -k --user ${username}:${password} $requrl 
 
